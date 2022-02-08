@@ -7,9 +7,11 @@ public class InputManager : MonoBehaviour
     PlayerInputs _playerInputs;
     [SerializeField] MovementController _movementController;
     [SerializeField] CameraController _cameraController;
+    [SerializeField] PlayerInteractController _playerInteractController;
 
     private Vector2 _movementInput;
     private Vector2 _cameraInput;
+    private bool _interact;
 
     private void OnEnable()
     {
@@ -19,6 +21,8 @@ public class InputManager : MonoBehaviour
 
             _playerInputs.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
             _playerInputs.PlayerMovement.Camera.performed += i => _cameraInput = i.ReadValue<Vector2>();
+            _playerInputs.PlayerInteraction.Interact.started += i => _interact = true;
+            //_playerInputs.PlayerInteraction.Interact.canceled += i => _interact = false;
         }
 
         _playerInputs.Enable();
@@ -34,6 +38,7 @@ public class InputManager : MonoBehaviour
         // handle all inputs
         HandleMovementInput();
         HandleCameraInput();
+        HandleInteractInput();
     }
 
     private void HandleMovementInput()
@@ -44,5 +49,14 @@ public class InputManager : MonoBehaviour
     private void HandleCameraInput()
     {
         _cameraController.HandleMovement(_cameraInput.x, _cameraInput.y);
+    }
+
+    private void HandleInteractInput()
+    {
+        if (_interact)
+        {
+            _playerInteractController.HandleInteract();
+            _interact = false;
+        }
     }
 }
