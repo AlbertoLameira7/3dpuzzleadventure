@@ -15,4 +15,9 @@ public class PlayerManager : MonoBehaviour
     {
         _inputManager.HandleInput();
     }
+
+    private void FixedUpdate()
+    {
+        _inputManager.HandleFixedUpdateInput();
+    }
 }

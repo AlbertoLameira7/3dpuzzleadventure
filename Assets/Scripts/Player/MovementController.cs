@@ -17,6 +17,8 @@ public class MovementController : MonoBehaviour
     public void HandleMovement(float horizontal, float vertical)
     {
         transform.rotation = Quaternion.Euler(0, _cameraTransform.eulerAngles.y, 0);
-        _rb.velocity = ((transform.forward * vertical) + (transform.right * horizontal)) * _playerSpeed * Time.deltaTime;
+        //Vector3 _mov = transform.InverseTransformVector(new Vector3(vertical, IsGroundedToInt(),horizontal));
+        Vector3 _mov = (transform.forward * vertical) + (transform.right * horizontal);
+        _rb.velocity = _mov * _playerSpeed * Time.deltaTime;
     }
 }

@@ -22,7 +22,6 @@ public class InputManager : MonoBehaviour
             _playerInputs.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
             _playerInputs.PlayerMovement.Camera.performed += i => _cameraInput = i.ReadValue<Vector2>();
             _playerInputs.PlayerInteraction.Interact.started += i => _interact = true;
-            //_playerInputs.PlayerInteraction.Interact.canceled += i => _interact = false;
         }
 
         _playerInputs.Enable();
@@ -36,9 +35,13 @@ public class InputManager : MonoBehaviour
     public void HandleInput()
     {
         // handle all inputs
-        HandleMovementInput();
         HandleCameraInput();
         HandleInteractInput();
+    }
+
+    public void HandleFixedUpdateInput()
+    {
+        HandleMovementInput();
     }
 
     private void HandleMovementInput()
