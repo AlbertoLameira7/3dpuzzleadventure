@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         _inputManager.HandleInput();
+        //Debug.Log("This is nr of items in inventory: " + InventoryManager.GetNrItems());
     }
 
     private void FixedUpdate()
