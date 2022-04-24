@@ -21,6 +21,10 @@ public class PlayerInteractController : MonoBehaviour
     {
         var ray = _playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         Physics.Raycast(ray, out _hit, _interactDistance);
+        if (_hit.collider.gameObject.tag == "cenas")
+        {
+            Debug.Log("CAN INTERAAAAACT");
+        }
     }
 
     public void HandleInteract()
