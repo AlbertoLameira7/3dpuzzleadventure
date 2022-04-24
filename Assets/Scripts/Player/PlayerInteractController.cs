@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerInteractController : MonoBehaviour
 {
+    public static Action ShowInteractionPopUp;
+    public static Action HideInteractionPopUp;
+
     [SerializeField] float _interactDistance = 2f;
     [SerializeField] Camera _playerCamera;
 
@@ -21,9 +25,12 @@ public class PlayerInteractController : MonoBehaviour
     {
         var ray = _playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         Physics.Raycast(ray, out _hit, _interactDistance);
-        if (_hit.collider.gameObject.tag == "cenas")
+        if (_hit.collider != null && _hit.collider.gameObject.tag == "cenas")
         {
-            Debug.Log("CAN INTERAAAAACT");
+            ShowInteractionPopUp();
+        } else if (_hit.collider == null || _hit.collider.gameObject.tag != "cenas")
+        {
+            HideInteractionPopUp();
         }
     }
 
