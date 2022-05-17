@@ -21,4 +21,9 @@ public class MovementController : MonoBehaviour
         Vector3 _mov = (transform.forward * vertical) + (transform.right * horizontal);
         _rb.velocity = _mov * _playerSpeed * Time.deltaTime;
     }
+
+    public float GetPlayerSpeed()
+    {
+        return _playerSpeed;
+    }
 }

@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     private Vector2 _movementInput;
     private Vector2 _cameraInput;
     private bool _interact;
+    private (float x, float y) _moveSpeed;
 
     private void OnEnable()
     {
@@ -39,14 +40,13 @@ public class InputManager : MonoBehaviour
         HandleInteractInput();
     }
 
-    public void HandleFixedUpdateInput()
-    {
-        HandleMovementInput();
-    }
-
-    private void HandleMovementInput()
+    public (float, float) HandleMovementInput()
     {
         _movementController.HandleMovement(_movementInput.x, _movementInput.y);
+
+        _moveSpeed.x = _movementInput.x;
+        _moveSpeed.y = _movementInput.y;
+        return _moveSpeed;
     }
 
     private void HandleCameraInput()
