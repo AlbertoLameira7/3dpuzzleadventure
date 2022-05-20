@@ -5,10 +5,26 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _background;
-    [SerializeField] private AudioSource _steps;
+    [SerializeField] private StepsAudioSource _steps;
 
-    void Awake()
+    void OnEnable()
     {
-        
+        PlayerManager.PlayStepsSound += PlayStepsSound;
+    }
+
+    void OnDisable()
+    {
+        PlayerManager.PlayStepsSound -= PlayStepsSound;
+    }
+
+    private void PlayStepsSound(Step _stepSound)
+    {
+        if (_stepSound == Step.LEFT)
+        {
+            _steps.PlayLeftStepSound();
+        } else
+        {
+            _steps.PlayRightStepSound();
+        }
     }
 }

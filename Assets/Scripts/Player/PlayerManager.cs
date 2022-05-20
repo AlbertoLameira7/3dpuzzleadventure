@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-enum Step
+public enum Step
 {
     LEFT,
     RIGHT
@@ -10,6 +11,8 @@ enum Step
 
 public class PlayerManager : MonoBehaviour
 {
+    public static Action<Step> PlayStepsSound;
+
     [SerializeField] private GameObject _player;
 
     private InputManager _inputManager;
@@ -53,7 +56,7 @@ public class PlayerManager : MonoBehaviour
             yield break;
 
         isStepSoundPlaying = true;
-
+        PlayStepsSound(_nextStep);
         Debug.Log("STEP: " + _nextStep);
 
         yield return new WaitForSeconds(time);

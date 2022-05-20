@@ -2664,6 +2664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 907667002}
   - component: {fileID: 907667003}
+  - component: {fileID: 907667004}
   m_Layer: 0
   m_Name: Steps
   m_TagString: Untagged
@@ -2698,7 +2699,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2781,6 +2782,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &907667004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907667001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4f43892e2917f43b88bf5fdc696e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftStepSound: {fileID: 8300000, guid: 96bc49d35c1502b4c9d640fe1d6dcf8f, type: 3}
+  _rightStepSound: {fileID: 8300000, guid: fee81a7e2096fb54fa15358d660f0ab9, type: 3}
 --- !u!114 &939804158 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9060052561280461480, guid: 269da4b494a90fe45bc5e1be92324634, type: 3}
@@ -5734,8 +5749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f75700c0d829094fa43b936c3387c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background: {fileID: 0}
-  _steps: {fileID: 0}
+  _background: {fileID: 1406852369}
+  _steps: {fileID: 907667004}
 --- !u!1001 &7427514088114125179
 PrefabInstance:
   m_ObjectHideFlags: 0
