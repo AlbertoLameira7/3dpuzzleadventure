@@ -25,10 +25,10 @@ public class PlayerInteractController : MonoBehaviour
     {
         var ray = _playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         Physics.Raycast(ray, out _hit, _interactDistance);
-        if (_hit.collider != null && _hit.collider.gameObject.tag == "cenas")
+        if (_hit.collider != null && _hit.collider.gameObject.tag == "Interact")
         {
             ShowInteractionPopUp();
-        } else if (_hit.collider == null || _hit.collider.gameObject.tag != "cenas")
+        } else if (_hit.collider == null || _hit.collider.gameObject.tag != "Interact")
         {
             HideInteractionPopUp();
         }
@@ -37,7 +37,7 @@ public class PlayerInteractController : MonoBehaviour
     public void HandleInteract()
     {
         Debug.Log("Pressed interact!");
-        if (_hit.collider != null && _hit.collider.gameObject.tag == "cenas")
+        if (_hit.collider != null && _hit.collider.gameObject.tag == "Interact")
         {
             _hit.collider.gameObject.GetComponent<IInteractable>().Interact();
         }
