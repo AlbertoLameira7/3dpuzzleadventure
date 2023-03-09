@@ -13,13 +13,6 @@ public class PlayerInteractController : MonoBehaviour
 
     private RaycastHit _hit;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +21,7 @@ public class PlayerInteractController : MonoBehaviour
         if (_hit.collider != null && _hit.collider.gameObject.tag == "Interact")
         {
             ShowInteractionPopUp();
-        } else if (_hit.collider == null || _hit.collider.gameObject.tag != "Interact")
+        } else
         {
             HideInteractionPopUp();
         }
