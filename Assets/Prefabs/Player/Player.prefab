@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 7427514087980153988}
   - component: {fileID: 9060052561280461480}
   - component: {fileID: 685034957}
-  - component: {fileID: 1271310361}
+  - component: {fileID: 3346801909942524550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactDistance: 2
   _playerCamera: {fileID: 7427514086580157603}
---- !u!114 &1271310361
+--- !u!114 &3346801909942524550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -417,6 +417,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7427514087980153990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb7fa77eaa716c48a196f03bd24ea06, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ad923ca96dee654aaf8bb451d569688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

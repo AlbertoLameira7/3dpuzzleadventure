@@ -18,7 +18,7 @@ public class IObj_Door : BaseInteractableObject
     public override void Interact() {
         if (_requiresItemToOpen) {
             // check if item is in inventory
-            if (InventoryManager.CheckIfItemExistsByID(_itemIDToOpenDoor)) {
+            if (InventoryManager.Instance.CheckIfItemExistsByID(_itemIDToOpenDoor)) {
                 // item exists in inventory, open door
                 Debug.Log("Open door with item ID: " + _itemIDToOpenDoor);
                 ToggleDoor();

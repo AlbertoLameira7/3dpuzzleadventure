@@ -29,17 +29,23 @@ public class Item
 
 interface IInventory
 {
-    bool AddItem();
-    bool RemoveItemByID();
-    bool CheckIfItemExistsByID();
+    bool AddItem(int id, string name, string description);
+    bool RemoveItemByID(int id);
+    bool CheckIfItemExistsByID(int id);
     int GetNrItems();
 }
 
 public class PlayerInventory : MonoBehaviour, IInventory
 {
-    [SerializeField] private List<Item> _items = new List<Item>();
+    private List<Item> _items = new List<Item>();
 
     public bool AddItem(int id, string name, string description) {
+        // check if item already exists, duplicates not allowed
+        if (_items.Find(item => item.getID() == id) != null) {
+            Debug.Log("Item with id: " + id + " already exists in the inventory");
+            return false;
+        }
+
         // add item to list
         _items.Add(new Item(id, name, description));
         return true;
@@ -47,14 +53,14 @@ public class PlayerInventory : MonoBehaviour, IInventory
 
     public bool RemoveItemByID(int id) {
         // remove item with specific ID from list
-        Item _tmp = _items.Find(itm => itm.getID() == id);
+        Item _tmp = _items.Find(item => item.getID() == id);
 
         if (_tmp != null) {
-            Debug.Log("Item with id: " + id + " exists in list, removing from list.");
+            Debug.Log("Item with id: " + id + " exists in list, removing from the inventory.");
             _items.Remove(_tmp);
             return true;
         } else {
-            Debug.Log("Item with id: " + id + " doesn't exist in the list.");
+            Debug.Log("Item with id: " + id + " doesn't exist in the inventory.");
             return false;
         }
     }
